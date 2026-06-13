@@ -1,0 +1,155 @@
+<div class="min-h-screen bg-gray-100 p-6">
+
+  <!-- Header -->
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-800">⚙️ Panel de Administración</h1>
+    <p class="text-gray-500 mt-1">Gestiona productos, categorías, usuarios y ventas</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="flex gap-2 mb-6 bg-white rounded-xl shadow p-2 w-fit">
+    <button
+      (click)="cambiarTab('productos')"
+      class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+      [class.bg-blue-600]="tabActiva === 'productos'"
+      [class.text-white]="tabActiva === 'productos'"
+      [class.text-gray-500]="tabActiva !== 'productos'"
+    >
+      📦 Productos
+    </button>
+    <button
+      (click)="cambiarTab('categorias')"
+      class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+      [class.bg-blue-600]="tabActiva === 'categorias'"
+      [class.text-white]="tabActiva === 'categorias'"
+      [class.text-gray-500]="tabActiva !== 'categorias'"
+    >
+      🏷️ Categorías
+    </button>
+    <button
+      (click)="cambiarTab('usuarios')"
+      class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+      [class.bg-blue-600]="tabActiva === 'usuarios'"
+      [class.text-white]="tabActiva === 'usuarios'"
+      [class.text-gray-500]="tabActiva !== 'usuarios'"
+    >
+      👥 Usuarios
+    </button>
+    <button
+      (click)="cambiarTab('ventas')"
+      class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+      [class.bg-blue-600]="tabActiva === 'ventas'"
+      [class.text-white]="tabActiva === 'ventas'"
+      [class.text-gray-500]="tabActiva !== 'ventas'"
+    >
+      🧾 Ventas
+    </button>
+  </div>
+
+  <!-- Contenido -->
+  <div class="bg-white rounded-xl shadow p-6">
+
+    <app-crud-table
+      *ngIf="tabActiva === 'productos'"
+      [columns]="productoColumns"
+      [data]="productos"
+      [selectOptions]="{ categorias: categorias }"
+      (create)="crearProducto($event)"
+      (update)="actualizarProducto($event)"
+      (delete)="eliminarProducto($event)">
+    </app-crud-table>
+
+    <app-crud-table
+      *ngIf="tabActiva === 'categorias'"
+      [columns]="categoriaColumns"
+      [data]="categorias"
+      (create)="crearCategoria($event)"
+      (update)="actualizarCategoria($event)"
+      (delete)="eliminarCategoria($event)">
+    </app-crud-table>
+
+    <app-crud-table
+      *ngIf="tabActiva === 'usuarios'"
+      [columns]="usuarioColumns"
+      [data]="usuarios"
+      [selectOptions]="{ categorias: categorias, roles: roles }"
+      (create)="crearUsuario($event)"
+      (update)="actualizarUsuario($event)"
+      (delete)="eliminarUsuario($event)">
+    </app-crud-table>
+
+    <app-crud-table
+      *ngIf="tabActiva === 'ventas'"
+      [columns]="ventaColumns"
+      [data]="ventas"
+      [allowCreate]="false"
+      [allowEdit]="false"
+      [allowDelete]="false"
+      (view)="verDetalleVenta($event)">
+    </app-crud-table>
+
+  </div>
+
+  <!-- Detalle de venta -->
+  <div
+    #detalleVentaSection
+    *ngIf="ventaSeleccionada"
+    class="mt-6 bg-white rounded-xl shadow p-6 border-l-4 border-blue-500"
+  >
+    <div class="flex justify-between items-center mb-6">
+      <div>
+        <h2 class="text-xl font-bold text-gray-800">🧾 Detalle de la Venta #{{ ventaSeleccionada.id }}</h2>
+        <p class="text-gray-400 text-sm mt-1">Información del pedido</p>
+      </div>
+      <button
+        (click)="cerrarDetalle()"
+        class="text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full w-9 h-9 flex items-center justify-center transition-colors text-lg font-bold"
+      >✕</button>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      <div class="bg-gray-50 rounded-lg p-4">
+        <p class="text-xs text-gray-400 uppercase font-semibold mb-1">Cliente</p>
+        <p class="text-gray-800 font-medium">{{ ventaSeleccionada.cliente }}</p>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-4">
+        <p class="text-xs text-gray-400 uppercase font-semibold mb-1">Fecha</p>
+        <p class="text-gray-800 font-medium">{{ ventaSeleccionada.fecha_venta | date:'dd/MM/yyyy HH:mm' }}</p>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-4">
+        <p class="text-xs text-gray-400 uppercase font-semibold mb-1">Estado</p>
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold"
+          [class.bg-yellow-100]="ventaSeleccionada.estado === 'PENDIENTE'"
+          [class.text-yellow-700]="ventaSeleccionada.estado === 'PENDIENTE'"
+          [class.bg-green-100]="ventaSeleccionada.estado === 'COMPLETADA'"
+          [class.text-green-700]="ventaSeleccionada.estado === 'COMPLETADA'"
+          [class.bg-red-100]="ventaSeleccionada.estado === 'CANCELADA'"
+          [class.text-red-700]="ventaSeleccionada.estado === 'CANCELADA'"
+        >{{ ventaSeleccionada.estado }}</span>
+      </div>
+      <div class="bg-blue-50 rounded-lg p-4">
+        <p class="text-xs text-blue-400 uppercase font-semibold mb-1">Total</p>
+        <p class="text-blue-700 font-bold text-xl">${{ ventaSeleccionada.total }}</p>
+      </div>
+    </div>
+
+    <h3 class="text-xs font-semibold text-gray-400 uppercase mb-3">Productos incluidos</h3>
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="bg-gray-50 text-gray-400 uppercase text-xs">
+          <th class="text-left px-4 py-3 rounded-l-lg">Producto</th>
+          <th class="text-center px-4 py-3">Cantidad</th>
+          <th class="text-right px-4 py-3 rounded-r-lg">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of detalleVenta" class="border-t border-gray-100 hover:bg-gray-50">
+          <td class="px-4 py-3 text-gray-700">{{ item.producto_nombre || item.producto }}</td>
+          <td class="px-4 py-3 text-center text-gray-600">{{ item.cantidad }}</td>
+          <td class="px-4 py-3 text-right font-medium text-gray-800">${{ item.subtotal }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

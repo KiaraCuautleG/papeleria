@@ -1,0 +1,40 @@
+<nav class="bg-blue-700 text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+        <a routerLink="/" class="text-2xl font-bold hover:text-gray-200">
+            📚 Papelería Online
+        </a>
+
+        <div class="flex gap-4 items-center">
+
+            <a routerLink="/" class="hover:text-gray-200">
+                Productos
+            </a>
+
+            <a *ngIf="isAdmin" routerLink="/admin" class="hover:text-gray-200">
+                ⚙️ Admin
+            </a>
+
+            <!-- Usuario logueado -->
+            <span *ngIf="isLoggedIn">
+                👤 {{ usuario.nombre }}
+            </span>
+
+            <!-- Login -->
+            <a *ngIf="!isLoggedIn" routerLink="/login">
+                🔑 Iniciar sesión
+            </a>
+
+            <!-- Logout -->
+            <button *ngIf="isLoggedIn" (click)="cerrarSesion()">
+                🚪 Salir
+            </button>
+
+            <a routerLink="/carrito" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg transition">
+                🛒 Carrito ({{ cantidadProductos }})
+            </a>
+
+        </div>
+
+    </div>
+</nav>
