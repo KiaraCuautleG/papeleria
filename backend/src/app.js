@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const categoriaRoutes = require("./routes/categoriaRoutes");
+const productoRoutes = require("./routes/productoRoutes");
 const app = express();
 
 // Middlewares
@@ -12,5 +13,6 @@ app.get('/', (req, res) => {
 });
 
 app.use("/api/categorias", categoriaRoutes);
+app.use("/api/productos", productoRoutes);
 
 module.exports = app;
