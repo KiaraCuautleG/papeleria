@@ -2,7 +2,9 @@
 
   <!-- Header -->
   <div class="mb-8">
-    <h1 class="text-3xl font-bold text-gray-800">⚙️ Panel de Administración</h1>
+    <h1 class="text-3xl font-bold text-gray-800 flex items-center gap-2">
+      <svg lucideSettings class="w-7 h-7"></svg> Panel de Administración
+    </h1>
     <p class="text-gray-500 mt-1">Gestiona productos, categorías, usuarios y ventas</p>
   </div>
 
@@ -10,39 +12,39 @@
   <div class="flex gap-2 mb-6 bg-white rounded-xl shadow p-2 w-fit">
     <button
       (click)="cambiarTab('productos')"
-      class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+      class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2"
       [class.bg-blue-600]="tabActiva === 'productos'"
       [class.text-white]="tabActiva === 'productos'"
       [class.text-gray-500]="tabActiva !== 'productos'"
     >
-      📦 Productos
+      <svg lucidePackage class="w-4 h-4"></svg> Productos
     </button>
     <button
       (click)="cambiarTab('categorias')"
-      class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+      class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2"
       [class.bg-blue-600]="tabActiva === 'categorias'"
       [class.text-white]="tabActiva === 'categorias'"
       [class.text-gray-500]="tabActiva !== 'categorias'"
     >
-      🏷️ Categorías
+      <svg lucideTag class="w-4 h-4"></svg> Categorías
     </button>
     <button
       (click)="cambiarTab('usuarios')"
-      class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+      class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2"
       [class.bg-blue-600]="tabActiva === 'usuarios'"
       [class.text-white]="tabActiva === 'usuarios'"
       [class.text-gray-500]="tabActiva !== 'usuarios'"
     >
-      👥 Usuarios
+      <svg lucideUsers class="w-4 h-4"></svg> Usuarios
     </button>
     <button
       (click)="cambiarTab('ventas')"
-      class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+      class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2"
       [class.bg-blue-600]="tabActiva === 'ventas'"
       [class.text-white]="tabActiva === 'ventas'"
       [class.text-gray-500]="tabActiva !== 'ventas'"
     >
-      🧾 Ventas
+      <svg lucideReceipt class="w-4 h-4"></svg> Ventas
     </button>
   </div>
 
@@ -98,7 +100,9 @@
   >
     <div class="flex justify-between items-center mb-6">
       <div>
-        <h2 class="text-xl font-bold text-gray-800">🧾 Detalle de la Venta #{{ ventaSeleccionada.id }}</h2>
+        <h2 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+          <svg lucideReceipt class="w-5 h-5"></svg> Detalle de la Venta #{{ ventaSeleccionada.id }}
+        </h2>
         <p class="text-gray-400 text-sm mt-1">Información del pedido</p>
       </div>
       <button

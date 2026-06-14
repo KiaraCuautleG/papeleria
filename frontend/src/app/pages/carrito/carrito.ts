@@ -8,11 +8,12 @@ import { VentaService } from '../../core/services/venta.service';
 import { CarritoItem } from '../../core/models/carrito-item';
 import { ToastService } from '../../core/services/toast.service';
 import { AuthService } from '../../core/services/authService';
+import { LucideShoppingCart } from '@lucide/angular';
 
 @Component({
   selector: 'app-carrito',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, LucideShoppingCart],
   templateUrl: './carrito.html',
   styleUrl: './carrito.scss'
 })

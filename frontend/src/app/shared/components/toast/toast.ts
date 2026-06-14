@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToastService, Toast } from '../../../core/services/toast.service';
+import { LucideCircleCheck, LucideX, LucideInfo } from '@lucide/angular';
 
 @Component({
   selector: 'app-toast',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LucideCircleCheck, LucideX, LucideInfo],
   template: `
     <div class="fixed top-20 right-5 z-50 flex flex-col gap-3 pointer-events-none">
       <div
@@ -23,7 +24,13 @@ import { ToastService, Toast } from '../../../core/services/toast.service';
         [class.border-blue-200]="toast.type === 'info'"
       >
         <span class="text-base leading-none mt-0.5">
-          {{ toast.type === 'success' ? '✅' : toast.type === 'error' ? '❌' : 'ℹ️' }}
+          @if (toast.type === 'success') {
+            <svg lucideCircleCheck class="w-5 h-5 text-green-600"></svg>
+          } @else if (toast.type === 'error') {
+            <svg lucideX class="w-5 h-5 text-red-600"></svg>
+          } @else {
+            <svg lucideInfo class="w-5 h-5 text-blue-600"></svg>
+          }
         </span>
         <span class="flex-1">{{ toast.message }}</span>
         <button

@@ -2,13 +2,15 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CrudColumn } from '../../../core/models/crud-column';
+import { LucideSearch, LucidePlus, LucidePencil, LucideTrash2, LucideSave, LucideX, LucideEye } from '@lucide/angular';
 
 @Component({
   selector: 'app-crud-table',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    LucideSearch, LucidePlus, LucidePencil, LucideTrash2, LucideSave, LucideX, LucideEye
   ],
   templateUrl: './crud-table.html',
   styleUrl: './crud-table.scss',

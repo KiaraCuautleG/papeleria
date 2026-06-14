@@ -10,11 +10,12 @@ import { UsuarioService } from '../../core/services/usuario.service';
 import { Usuario } from '../../core/models/usuario';
 import { VentaService } from '../../core/services/venta.service';
 import { ToastService } from '../../core/services/toast.service';
+import { LucideSettings, LucidePackage, LucideTag, LucideUsers, LucideReceipt } from '@lucide/angular';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, CrudTable],
+  imports: [CommonModule, CrudTable, LucideSettings, LucidePackage, LucideTag, LucideUsers, LucideReceipt],
   templateUrl: './admin.html',
   styleUrl: './admin.scss',
 })

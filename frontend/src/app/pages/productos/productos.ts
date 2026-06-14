@@ -6,11 +6,12 @@ import { Producto } from '../../core/models/producto';
 import { CarritoService } from '../../core/services/carrito.service';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../core/services/toast.service';
+import { LucideBookOpen, LucideShoppingCart } from '@lucide/angular';
 
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, LucideBookOpen, LucideShoppingCart],
   templateUrl: './productos.html',
   styleUrl: './productos.scss'
 })

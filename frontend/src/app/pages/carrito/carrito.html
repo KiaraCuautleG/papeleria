@@ -3,7 +3,9 @@
 
         <!-- Header -->
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-800">🛒 Carrito de Compras</h1>
+            <h1 class="text-3xl font-bold text-gray-800 flex items-center gap-2">
+              <svg lucideShoppingCart class="w-8 h-8"></svg> Carrito de Compras
+            </h1>
             <p class="text-gray-400 text-sm mt-1">Revisa tus productos antes de finalizar</p>
         </div>
 
@@ -14,7 +16,9 @@
 
                 <!-- Carrito vacío -->
                 <div *ngIf="productos.length === 0" class="text-center py-16 text-gray-400">
-                    <div class="text-5xl mb-4">🛒</div>
+                    <div class="flex justify-center mb-4">
+                      <svg lucideShoppingCart class="w-14 h-14"></svg>
+                    </div>
                     <p class="font-medium">Tu carrito está vacío</p>
                     <a routerLink="/" class="inline-block mt-4 text-blue-600 hover:underline text-sm">Ver productos</a>
                 </div>

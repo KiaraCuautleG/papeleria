@@ -1,11 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { LucideCircleCheck } from '@lucide/angular';
 
 @Component({
   selector: 'app-confirmacion',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, LucideCircleCheck],
   templateUrl: './confirmacion.html',
   styleUrl: './confirmacion.scss',
 })

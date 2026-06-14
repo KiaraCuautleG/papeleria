@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { LucideBookOpen, LucideShoppingCart, LucideSettings, LucideUser, LucideLogIn, LucideLogOut } from '@lucide/angular';
 
 import { CarritoService } from '../../../core/services/carrito.service';
 import { AuthService } from '../../../core/services/authService';
@@ -8,7 +9,7 @@ import { AuthService } from '../../../core/services/authService';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, LucideBookOpen, LucideShoppingCart, LucideSettings, LucideUser, LucideLogIn, LucideLogOut],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })
