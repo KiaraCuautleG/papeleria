@@ -20,7 +20,7 @@
                       <svg lucideShoppingCart class="w-14 h-14"></svg>
                     </div>
                     <p class="font-medium">Tu carrito está vacío</p>
-                    <a routerLink="/" class="inline-block mt-4 text-blue-600 hover:underline text-sm">Ver productos</a>
+                    <a routerLink="/" class="inline-block mt-4 text-purple-600 hover:underline text-sm">Ver productos</a>
                 </div>
 
                 <!-- Items -->
@@ -35,7 +35,7 @@
                     <div class="flex-1 min-w-0">
                         <h3 class="font-semibold text-gray-800 truncate">{{ item.producto.nombre }}</h3>
                         <p class="text-gray-400 text-xs mt-0.5">{{ item.producto.categoria_nombre }}</p>
-                        <p class="text-blue-600 font-semibold text-sm mt-1">${{ item.producto.precio }}</p>
+                        <p class="text-purple-600 font-semibold text-sm mt-1">${{ item.producto.precio }}</p>
                     </div>
 
                     <!-- Cantidad -->
@@ -80,7 +80,7 @@
                     </div>
 
                     <button (click)="finalizarCompra()"
-                        class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-xl transition-colors">
+                        class="w-full bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-semibold py-3 rounded-xl transition-colors">
                         Finalizar compra →
                     </button>
 

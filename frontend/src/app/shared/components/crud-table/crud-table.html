@@ -6,13 +6,13 @@
       type="text"
       [(ngModel)]="searchTerm"
       placeholder="Buscar..."
-      class="border border-gray-200 rounded-lg pl-9 pr-4 py-2 text-sm w-72 focus:outline-none focus:ring-2 focus:ring-blue-300"
+      class="border border-gray-200 rounded-lg pl-9 pr-4 py-2 text-sm w-72 focus:outline-none focus:ring-2 focus:ring-purple-300"
     />
   </div>
   <button
     *ngIf="allowCreate"
     (click)="nuevaFila()"
-    class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+    class="bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
   >
     <svg lucidePlus class="w-4 h-4"></svg> Nuevo
   </button>
@@ -43,12 +43,12 @@
             <input
               *ngIf="column.type !== 'select'"
               [(ngModel)]="item[column.field]"
-              class="border border-gray-300 rounded-lg px-2 py-1 w-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+              class="border border-gray-300 rounded-lg px-2 py-1 w-full text-sm focus:outline-none focus:ring-2 focus:ring-purple-300"
             />
             <select
               *ngIf="column.type === 'select'"
               [(ngModel)]="item[column.field]"
-              class="border border-gray-300 rounded-lg px-2 py-1 w-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+              class="border border-gray-300 rounded-lg px-2 py-1 w-full text-sm focus:outline-none focus:ring-2 focus:ring-purple-300"
             >
               <option *ngFor="let option of selectOptions[column.selectKey || '']" [value]="option.id">
                 {{ option.nombre }}
@@ -60,7 +60,7 @@
         <td class="px-4 py-3 text-center whitespace-nowrap">
           <ng-container *ngIf="editingId !== item.id">
             <button *ngIf="allowEdit" (click)="editar(item.id)"
-              class="text-blue-500 hover:text-blue-700 hover:bg-blue-50 rounded-lg px-2 py-1 transition-colors mr-1"
+              class="text-purple-500 hover:text-purple-700 hover:bg-purple-50 rounded-lg px-2 py-1 transition-colors mr-1"
               title="Editar"><svg lucidePencil class="w-4 h-4"></svg></button>
             <button *ngIf="allowDelete" (click)="eliminar(item.id)"
               class="text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg px-2 py-1 transition-colors"
@@ -68,14 +68,14 @@
           </ng-container>
           <ng-container *ngIf="editingId === item.id">
             <button (click)="guardar(item)"
-              class="text-green-600 hover:text-green-800 hover:bg-green-50 rounded-lg px-2 py-1 transition-colors mr-1"
+              class="text-fuchsia-600 hover:text-fuchsia-800 hover:bg-fuchsia-50 rounded-lg px-2 py-1 transition-colors mr-1"
               title="Guardar"><svg lucideSave class="w-4 h-4"></svg></button>
             <button (click)="cancelar()"
               class="text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg px-2 py-1 transition-colors"
               title="Cancelar"><svg lucideX class="w-4 h-4"></svg></button>
           </ng-container>
           <button *ngIf="!allowEdit && !allowDelete" (click)="verDetalle(item.id)"
-            class="text-blue-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg px-2 py-1 transition-colors"
+            class="text-purple-400 hover:text-purple-600 hover:bg-purple-50 rounded-lg px-2 py-1 transition-colors"
             title="Ver detalle"><svg lucideEye class="w-4 h-4"></svg></button>
         </td>
 
@@ -89,17 +89,17 @@
       </tr>
 
       <!-- Nueva fila -->
-      <tr *ngIf="creating" class="border-t border-blue-100 bg-blue-50">
+      <tr *ngIf="creating" class="border-t border-purple-100 bg-purple-50">
         <td *ngFor="let column of columns" class="px-4 py-3">
           <input
             *ngIf="column.type !== 'select'"
             [(ngModel)]="newRow[column.field]"
-            class="border border-gray-300 rounded-lg px-2 py-1 w-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+            class="border border-gray-300 rounded-lg px-2 py-1 w-full text-sm focus:outline-none focus:ring-2 focus:ring-purple-300"
           />
           <select
             *ngIf="column.type === 'select'"
             [(ngModel)]="newRow[column.field]"
-            class="border border-gray-300 rounded-lg px-2 py-1 w-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+            class="border border-gray-300 rounded-lg px-2 py-1 w-full text-sm focus:outline-none focus:ring-2 focus:ring-purple-300"
           >
             <option *ngFor="let option of selectOptions[column.selectKey || '']" [value]="option.id">
               {{ option.nombre }}
@@ -108,7 +108,7 @@
         </td>
         <td class="px-4 py-3 text-center whitespace-nowrap">
           <button (click)="crear()"
-            class="text-green-600 hover:text-green-800 hover:bg-green-50 rounded-lg px-2 py-1 transition-colors mr-1"
+            class="text-fuchsia-600 hover:text-fuchsia-800 hover:bg-fuchsia-50 rounded-lg px-2 py-1 transition-colors mr-1"
             title="Crear"><svg lucideSave class="w-4 h-4"></svg></button>
           <button (click)="cancelar()"
             class="text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg px-2 py-1 transition-colors"

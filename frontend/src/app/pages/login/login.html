@@ -5,7 +5,7 @@
     <!-- Logo / Título -->
     <div class="text-center mb-8">
       <div class="flex justify-center mb-3">
-        <svg lucideBookOpen class="w-12 h-12 text-blue-600"></svg>
+        <svg lucideBookOpen class="w-12 h-12 text-purple-600"></svg>
       </div>
       <h1 class="text-2xl font-bold text-gray-800">Papelería Online</h1>
       <p class="text-gray-400 text-sm mt-1">Inicia sesión para continuar</p>
@@ -18,7 +18,7 @@
         type="email"
         [(ngModel)]="email"
         placeholder="usuario@correo.com"
-        class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
       />
     </div>
 
@@ -30,7 +30,7 @@
           [type]="showPassword ? 'text' : 'password'"
           [(ngModel)]="password"
           placeholder="••••••••"
-          class="w-full border border-gray-300 rounded-lg px-4 py-2.5 pr-11 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2.5 pr-11 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
         />
         <button
           type="button"
@@ -52,8 +52,8 @@
       (click)="iniciarSesion()"
       [disabled]="!email.trim() || !password.trim()"
       class="w-full py-2.5 rounded-lg text-sm font-semibold transition-colors"
-      [class.bg-blue-600]="email.trim() && password.trim()"
-      [class.hover:bg-blue-700]="email.trim() && password.trim()"
+      [class.bg-purple-600]="email.trim() && password.trim()"
+      [class.hover:bg-purple-700]="email.trim() && password.trim()"
       [class.text-white]="email.trim() && password.trim()"
       [class.bg-gray-200]="!email.trim() || !password.trim()"
       [class.text-gray-400]="!email.trim() || !password.trim()"

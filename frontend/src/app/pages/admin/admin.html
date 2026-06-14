@@ -13,7 +13,7 @@
     <button
       (click)="cambiarTab('productos')"
       class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2"
-      [class.bg-blue-600]="tabActiva === 'productos'"
+      [class.bg-purple-600]="tabActiva === 'productos'"
       [class.text-white]="tabActiva === 'productos'"
       [class.text-gray-500]="tabActiva !== 'productos'"
     >
@@ -22,7 +22,7 @@
     <button
       (click)="cambiarTab('categorias')"
       class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2"
-      [class.bg-blue-600]="tabActiva === 'categorias'"
+      [class.bg-purple-600]="tabActiva === 'categorias'"
       [class.text-white]="tabActiva === 'categorias'"
       [class.text-gray-500]="tabActiva !== 'categorias'"
     >
@@ -31,7 +31,7 @@
     <button
       (click)="cambiarTab('usuarios')"
       class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2"
-      [class.bg-blue-600]="tabActiva === 'usuarios'"
+      [class.bg-purple-600]="tabActiva === 'usuarios'"
       [class.text-white]="tabActiva === 'usuarios'"
       [class.text-gray-500]="tabActiva !== 'usuarios'"
     >
@@ -40,7 +40,7 @@
     <button
       (click)="cambiarTab('ventas')"
       class="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2"
-      [class.bg-blue-600]="tabActiva === 'ventas'"
+      [class.bg-purple-600]="tabActiva === 'ventas'"
       [class.text-white]="tabActiva === 'ventas'"
       [class.text-gray-500]="tabActiva !== 'ventas'"
     >
@@ -96,7 +96,7 @@
   <div
     #detalleVentaSection
     *ngIf="ventaSeleccionada"
-    class="mt-6 bg-white rounded-xl shadow p-6 border-l-4 border-blue-500"
+    class="mt-6 bg-white rounded-xl shadow p-6 border-l-4 border-purple-500"
   >
     <div class="flex justify-between items-center mb-6">
       <div>
@@ -123,17 +123,17 @@
       <div class="bg-gray-50 rounded-lg p-4">
         <p class="text-xs text-gray-400 uppercase font-semibold mb-1">Estado</p>
         <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold"
-          [class.bg-yellow-100]="ventaSeleccionada.estado === 'PENDIENTE'"
-          [class.text-yellow-700]="ventaSeleccionada.estado === 'PENDIENTE'"
-          [class.bg-green-100]="ventaSeleccionada.estado === 'COMPLETADA'"
-          [class.text-green-700]="ventaSeleccionada.estado === 'COMPLETADA'"
+          [class.bg-red-100]="ventaSeleccionada.estado === 'PENDIENTE'"
+          [class.text-red-400]="ventaSeleccionada.estado === 'PENDIENTE'"
+          [class.bg-fuchsia-100]="ventaSeleccionada.estado === 'COMPLETADA'"
+          [class.text-fuchsia-700]="ventaSeleccionada.estado === 'COMPLETADA'"
           [class.bg-red-100]="ventaSeleccionada.estado === 'CANCELADA'"
           [class.text-red-700]="ventaSeleccionada.estado === 'CANCELADA'"
         >{{ ventaSeleccionada.estado }}</span>
       </div>
-      <div class="bg-blue-50 rounded-lg p-4">
-        <p class="text-xs text-blue-400 uppercase font-semibold mb-1">Total</p>
-        <p class="text-blue-700 font-bold text-xl">${{ ventaSeleccionada.total }}</p>
+      <div class="bg-purple-50 rounded-lg p-4">
+        <p class="text-xs text-purple-400 uppercase font-semibold mb-1">Total</p>
+        <p class="text-purple-700 font-bold text-xl">${{ ventaSeleccionada.total }}</p>
       </div>
     </div>
 
