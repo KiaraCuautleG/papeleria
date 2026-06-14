@@ -1,62 +1,93 @@
-<div class="max-w-5xl mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-6">
-        🛒 Carrito de Compras
-    </h1>
+<div class="min-h-screen bg-gray-100 py-10 px-4">
+    <div class="max-w-5xl mx-auto">
 
-    <div *ngFor="let item of productos" class="border rounded-lg p-4 mb-4">
-        <div class="flex justify-between items-center">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">🛒 Carrito de Compras</h1>
+            <p class="text-gray-400 text-sm mt-1">Revisa tus productos antes de finalizar</p>
+        </div>
 
-            <div>
-                <h3 class="font-bold text-lg">
-                    {{ item.producto.nombre }}
-                </h3>
+        <div class="flex gap-6 items-start">
 
-                <p class="text-gray-600">
-                    {{ item.producto.categoria_nombre }}
-                </p>
+            <!-- Lista de productos -->
+            <div class="flex-1 bg-white rounded-2xl shadow p-6">
 
-                <p class="font-semibold">
-                    ${{ item.producto.precio }}
-                </p>
+                <!-- Carrito vacío -->
+                <div *ngIf="productos.length === 0" class="text-center py-16 text-gray-400">
+                    <div class="text-5xl mb-4">🛒</div>
+                    <p class="font-medium">Tu carrito está vacío</p>
+                    <a routerLink="/" class="inline-block mt-4 text-blue-600 hover:underline text-sm">Ver productos</a>
+                </div>
+
+                <!-- Items -->
+                <div *ngFor="let item of productos; let last = last" class="flex items-center gap-4 py-4"
+                    [class.border-b]="!last" [class.border-gray-100]="!last">
+
+                    <!-- Imagen -->
+                    <img [src]="item.producto.imagen_url || 'https://placehold.co/80x80'" [alt]="item.producto.nombre"
+                        class="w-20 h-20 object-cover rounded-xl border border-gray-100 shrink-0" />
+
+                    <!-- Info -->
+                    <div class="flex-1 min-w-0">
+                        <h3 class="font-semibold text-gray-800 truncate">{{ item.producto.nombre }}</h3>
+                        <p class="text-gray-400 text-xs mt-0.5">{{ item.producto.categoria_nombre }}</p>
+                        <p class="text-blue-600 font-semibold text-sm mt-1">${{ item.producto.precio }}</p>
+                    </div>
+
+                    <!-- Cantidad -->
+                    <div class="flex items-center gap-2 shrink-0">
+                        <button (click)="disminuirCantidad(item.producto.id)"
+                            class="w-8 h-8 flex items-center justify-center rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold transition-colors">−</button>
+                        <span class="w-6 text-center font-bold text-gray-800">{{ item.cantidad }}</span>
+                        <button (click)="aumentarCantidad(item.producto.id)"
+                            class="w-8 h-8 flex items-center justify-center rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold transition-colors">+</button>
+                    </div>
+
+                    <!-- Subtotal + eliminar -->
+                    <div class="text-right shrink-0 w-24">
+                        <p class="font-bold text-gray-800">${{ item.producto.precio * item.cantidad }}</p>
+                        <button (click)="eliminarProducto(item.producto.id)"
+                            class="text-red-400 hover:text-red-600 text-xs mt-1 transition-colors">Eliminar</button>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="flex items-center gap-3">
+            <!-- Resumen -->
+            <div class="w-72 shrink-0 bg-white rounded-2xl shadow p-6 sticky top-24">
+                <h2 class="text-base font-bold text-gray-800 mb-5">Resumen del pedido</h2>
 
-                <button (click)="disminuirCantidad(item.producto.id)" class="bg-gray-300 px-3 py-1 rounded">
-                    -
-                </button>
+                <div *ngIf="productos.length === 0" class="text-gray-400 text-sm text-center py-4">
+                    No hay productos
+                </div>
 
-                <span class="font-bold">
-                    {{ item.cantidad }}
-                </span>
+                <div *ngIf="productos.length > 0">
+                    <!-- Desglose -->
+                    <div *ngFor="let item of productos" class="flex justify-between text-sm text-gray-600 mb-2">
+                        <span class="truncate flex-1 mr-2">{{ item.producto.nombre }} × {{ item.cantidad }}</span>
+                        <span class="shrink-0 font-medium">${{ item.producto.precio * item.cantidad }}</span>
+                    </div>
 
-                <button (click)="aumentarCantidad(item.producto.id)" class="bg-gray-300 px-3 py-1 rounded">
-                    +
-                </button>
+                    <div class="border-t border-gray-100 my-4"></div>
 
-            </div>
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="font-semibold text-gray-700">Total</span>
+                        <span class="text-2xl font-bold text-gray-800">${{ total }}</span>
+                    </div>
 
-            <div class="text-right">
-                <p class="font-bold">
-                    ${{ item.producto.precio * item.cantidad }}
-                </p>
+                    <button (click)="finalizarCompra()"
+                        class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-xl transition-colors">
+                        Finalizar compra →
+                    </button>
 
-                <button (click)="eliminarProducto(item.producto.id)" class="text-red-600 text-sm">
-                    Eliminar
-                </button>
+                    <a routerLink="/"
+                        class="block text-center text-sm text-gray-400 hover:text-gray-600 mt-4 transition-colors">
+                        ← Seguir comprando
+                    </a>
+                </div>
             </div>
 
         </div>
-    </div>
 
-    <div class="text-right mt-6">
-        <h2 class="text-2xl font-bold">
-            Total: ${{ total }}
-        </h2>
-
-        <button (click)="finalizarCompra()"
-            class="mt-4 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg">
-            Finalizar compra
-        </button>
     </div>
 </div>

@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 
 import { CarritoService } from '../../core/services/carrito.service';
 import { Producto } from '../../core/models/producto';
 import { VentaService } from '../../core/services/venta.service';
-import { Router } from '@angular/router';
 import { CarritoItem } from '../../core/models/carrito-item';
 import { ToastService } from '../../core/services/toast.service';
 import { AuthService } from '../../core/services/authService';
@@ -12,7 +12,7 @@ import { AuthService } from '../../core/services/authService';
 @Component({
   selector: 'app-carrito',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './carrito.html',
   styleUrl: './carrito.scss'
 })
