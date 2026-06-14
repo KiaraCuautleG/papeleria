@@ -47,5 +47,8 @@
     "postcss": "^8.5.15",
     "tailwindcss": "^4.3.0",
     "typescript": "~5.9.2"
+  },
+  "volta": {
+    "node": "22.16.0"
   }
 }
